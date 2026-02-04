@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine? 💖</title>
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="Luvskie, Will You Be My Valentine? 💖" />
+  <meta property="og:description" content="I have a special Valentine surprise for you 💌" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Be+My+Valentine+%F0%9F%92%96" />
+  <meta property="og:url" content="YOUR_SHARED_LINK_HERE" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Will You Be My Valentine? 💖" />
+  <meta name="twitter:description" content="A little question with a big surprise 💘" />
+  <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Valentine+Surprise+%F0%9F%92%95" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    }
+    .card {
+      background: #fff;
+      padding: 2.5rem 2rem 3rem;
+      border-radius: 20px;
+      text-align: center;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    h1 {
+      margin-top: 0;
+      color: #e63946;
+      font-size: 2rem;
+    }
+    p {
+      color: #444;
+      margin-bottom: 2rem;
+    }
+    .buttons {
+      position: relative;
+      height: 120px;
+    }
+    button {
+      padding: 0.8rem 1.6rem;
+      font-size: 1rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    button:active { transform: scale(0.96); }
+    #yesBtn {
+      background: #e63946;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(230,57,70,0.4);
+    }
+    #noBtn {
+      position: absolute;
+      left: 55%;
+      top: 0;
+      background: #ccc;
+      color: #333;
+      animation: tease 1.2s infinite;
+    }
+    @keyframes tease {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg) translateX(-2px); }
+      50% { transform: rotate(5deg) translateX(2px); }
+      75% { transform: rotate(-5deg) translateX(-2px); }
+      100% { transform: rotate(0deg); }
+    }
+    .success {
+      display: none;
+      animation: pop 0.6s ease forwards;
+    }
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .heart {
+      font-size: 3rem;
+      animation: beat 1s infinite;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <h1>Hey Steph 💕</h1>
+    <p>Would you like to be my Valentine?</p>
+
+    <div class="buttons" id="buttons">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn">No 🙈</button>
+    </div>
+
+    <div class="success" id="success">
+      <div class="heart">❤️</div>
+      <h2>Sweet!!!</h2>
+      <p>You just made my day. 💌<br />Get ready… I’m taking you here 😉</p>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const buttons = document.getElementById('buttons');
+    const success = document.getElementById('success');
+
+    noBtn.addEventListener('mouseenter', moveNoButton);
+    noBtn.addEventListener('click', moveNoButton);
+
+    function moveNoButton() {
+      const container = buttons.getBoundingClientRect();
+      const btn = noBtn.getBoundingClientRect();
+
+      const maxX = container.width - btn.width;
+      const maxY = container.height - btn.height;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+      const rotate = (Math.random() * 40) - 20;
+      const scale = 0.9 + Math.random() * 0.4;
+
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+      noBtn.style.transform = `rotate(${rotate}deg) scale(${scale})`;
+
+      const taunts = ['Nice try 😜', 'Oops!', 'Almost 😂', 'Nope 😈', 'You’re too slow 😏'];
+      noBtn.textContent = taunts[Math.floor(Math.random() * taunts.length)];
+    }
+
+    yesBtn.addEventListener('click', () => {
+      buttons.style.display = 'none';
+      success.style.display = 'block';
+      setTimeout(() => {
+        window.location.href = 'https://maps.app.goo.gl/SkiE6u39PJ3gjbJWA';
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
